@@ -1,7 +1,5 @@
 sudo: required
 language: ruby
-services:
-- docker
 rvm:
 - 2.1
 before_install:
