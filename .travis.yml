@@ -11,6 +11,6 @@ script:
 - bundle install
 - bundle exec jekyll build
 after_success:
-- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no' public/_site root@nathanzhang.me:/usr/share/nginx/html
+- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no' public/_site root@45.77.120.114:/usr/share/nginx/html
 addons:
   ssh_known_hosts: 45.77.120.114
