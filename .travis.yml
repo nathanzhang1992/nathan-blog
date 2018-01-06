@@ -1,15 +1,16 @@
 sudo: required
-
 language: ruby
-
 services:
-  - docker
-
+- docker
 rvm:
-  - 2.1
-
+- 2.1
+before_install:
+- openssl aes-256-cbc -K $encrypted_97d432d3ed20_key -iv $encrypted_97d432d3ed20_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
+- chmod 600 ~/.ssh/id_rsa
+- echo -e "Host nathanzhang.me\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
-  - bundle install
-  - bundle exec jekyll build
-  - docker build -t nathan-blog .
-  - docker push brac11/nathan-blog
+- bundle install
+- bundle exec jekyll build
+after_success:
+- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/_site root@nathanzhang.me:/usr/share/nginx/html
