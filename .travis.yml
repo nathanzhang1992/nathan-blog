@@ -8,6 +8,7 @@ services:
 rvm:
   - 2.1
 
-script: jekyll build \
-        docker build -t nathan-blog . \
-        docker push brac11/nathan-blog
+script:
+  - jekyll build
+  - docker build -t nathan-blog .
+  - docker push brac11/nathan-blog
