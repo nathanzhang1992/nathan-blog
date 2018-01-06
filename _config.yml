@@ -98,3 +98,6 @@ friends: [
         href: "#"
     }
 ]
+
+#Travis 在它的构建服务器下的 vendor 目录中捆绑了所有的 gem, Jekyll 在此目录下会进行错误的读取并导致更严重的后果。
+exclude: [vendor]
