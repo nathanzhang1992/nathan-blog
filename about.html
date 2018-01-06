@@ -1,0 +1,147 @@
+---
+layout: page
+title: "About"
+description: "Hey, this is Nathan."
+header-img: "img/about-bg.jpg"
+---
+
+<!-- Language Selector -->
+<select onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
+    <option value="0"> 中文 Chinese </option>
+    <option value="1" selected> 英语 English </option>
+</select>
+
+<!-- Chinese Version -->
+<div class="zh post-container">
+    <h3>莎士比亞的情詩——媾死女的豪氣</h3>
+    <p>
+        該把你比作夏天的日子嗎？<br>
+        但你比夏日更可愛，更溫柔。<br>
+        夏天時而太大風，時而太炎熱；<br>
+        而且，夏季實在太短。<br>
+    </p>
+    <p>
+        所有美麗的東西，<br>
+        都有退色的一天；<br>
+        這大概是大自然運作的方式吧，<br>
+        是無可避免。<br>
+    </p>
+    <p>
+        可是，你的夏日是永恆的，<br>
+        即使死亡也不能奪去你的美麗，<br>
+        因為我已把它紀錄下來。<br>
+    </p>
+    <p>
+        只要世人還有一口氣，眼睛還看得見，<br>
+        這首詩就能存活下去，令你長存於世。<br>
+    </p>
+</div>
+
+<!-- English Version -->
+<div class="en post-container">
+    <h3>A romantic man in sonnet 18﻿</h3>
+    <p>by William Shakespeare</p>
+    <p> 
+        Shall I compare thee to a summer's day?<br>
+        Thou art more lovely and more temperate.<br>
+        Rough winds do shake the darling buds of May,<br>
+        And summer's lease hath all too short a date.<br>
+    </p>
+    <p> 
+        Sometime too hot the eye of heaven shines,<br>
+        And often is its gold complexion dimmed.<br>
+        Every fair from fair sometime declines,<br>
+        By chance, or nature's changing course untrimmed.<br>
+    </p>
+    <p>
+        But thy eternal summer shall not fade,<br>
+        Nor lose possession of that fair thou owest.<br>
+        Nor shall death brag thou wander'st in his shade,<br>
+        When in eternal lines in time thou growest.<br>
+    </p>
+    <p>
+        So long as men can breath or eyes can see,<br>
+        So long lives this, and this gives life to thee.<br>
+    </p>
+
+</div>
+
+<!-- Handle Language Change -->
+<script type="text/javascript">
+    var $zh = document.querySelector(".zh");
+    var $en = document.querySelector(".en");
+    function onLanChange(index){
+        if(index == 0){
+            $zh.style.display = "block";
+            $en.style.display = "none";
+        }else{
+            $en.style.display = "block";
+            $zh.style.display = "none";
+        }
+    }
+    onLanChange(1);
+</script>
+
+
+
+{% if site.duoshuo_username %}
+<!-- 多说评论框 start -->
+<div class="comment">
+    <div class="ds-thread"
+    {% if site.duoshuo_username == "huxblog" %}
+        data-thread-id="1187623191091085319"
+    {% else %}
+        data-thread-key="{{site.duoshuo_username}}/about"
+    {% endif %}
+
+    data-title="{{page.title}}"
+    data-url="{{site.url}}/about/"></div>
+</div>
+<!-- 多说评论框 end -->
+
+<!-- Duoshuo hacking -->
+<input id="dsUser" type="hidden" value="{{site.duoshuo_username}}"  />
+
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    // dynamic User hacking by Hux
+    var _user = document.getElementById('dsUser').value;
+    // duoshuo comment query.
+    var duoshuoQuery = {short_name: _user };
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0]
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+</script>
+<!-- 多说公共JS代码 end -->
+{% endif %}
+
+
+{% if site.disqus_username %}
+<!-- disqus 评论框 start -->
+<div class="comment">
+    <div id="disqus_thread" class="disqus-thread">
+
+    </div>
+</div>
+<!-- disqus 评论框 end -->
+
+<!-- disqus 公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = "{{site.disqus_username}}";
+    var disqus_identifier = "{{site.disqus_username}}/{{page.url}}";
+    var disqus_url = "{{site.url}}{{page.url}}";
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<!-- disqus 公共JS代码 end -->
+{% endif %}
