@@ -11,6 +11,7 @@ script:
 - bundle install
 - bundle exec jekyll build
 after_success:
-- scp -o stricthostkeychecking=no -r ./_site/* root@45.77.120.114:/usr/share/nginx/html
+- export SSHPASS=$DEPLOY_PASS
+- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no' ./_site/* root@45.77.120.114:/usr/share/nginx/html
 addons:
   ssh_known_hosts: 45.77.120.114
