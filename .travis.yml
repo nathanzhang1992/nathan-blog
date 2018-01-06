@@ -11,4 +11,4 @@ script:
 - bundle install
 - bundle exec jekyll build
 after_success:
-- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no -p 22' public/_site root@nathanzhang.me:/usr/share/nginx/html
+- rsync -rv --delete -e 'ssh -o stricthostkeychecking=no' public/_site root@nathanzhang.me:/usr/share/nginx/html
