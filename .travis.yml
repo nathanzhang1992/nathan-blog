@@ -3,8 +3,8 @@ language: ruby
 rvm:
 - 2.1
 before_install:
-- openssl aes-256-cbc -K $encrypted_97d432d3ed20_key -iv $encrypted_97d432d3ed20_iv
-  -in id_rsa.enc -out ~/.ssh/id_rsa -d
+- openssl aes-256-cbc -K $encrypted_9987d5d337d3_key -iv $encrypted_9987d5d337d3_iv
+  -in id_rsa.enc -out ~\/.ssh/id_rsa -d
 - chmod 600 ~/.ssh/id_rsa
 - echo -e "Host nathanzhang.me\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 script:
